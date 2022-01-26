@@ -46,7 +46,7 @@ const Navigation = () => {
                             props.isActive ? " navigation__link--active " : ""
                         }`
                     }
-                    to="/"
+                    to="dev-lviv/"
                 >
                     Converter
                 </NavLink>
@@ -56,7 +56,7 @@ const Navigation = () => {
                             props.isActive ? " navigation__link--active " : ""
                         }`
                     }
-                    to="rates"
+                    to="dev-lviv/rates"
                 >
                     Rates
                 </NavLink>
