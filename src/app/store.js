@@ -1,20 +1,33 @@
 import { createStore } from "redux"
+import { CONVERT_CURRENCY, BASE_CURRENCY, GET_RATES } from "./types"
 
-function todos(state = [], action) {
-    switch (action.type) {
-        case "ADD_TODO":
-            return state.concat([action.text])
+const initialState = {
+    current_currency: localStorage.getItem("currency_name") ?? "",
+    rates: [],
+    result: "",
+    curr_2: "",
+}
+
+function currency(state = initialState, { type, payload }) {
+    switch (type) {
+        case CONVERT_CURRENCY:
+            return {
+                ...state,
+                result: payload.result,
+                curr_2: payload.curr_2,
+            }
+
+        case BASE_CURRENCY:
+            localStorage.setItem("currency_name", payload.curr)
+            return { ...state, current_currency: payload.curr }
+        case GET_RATES:
+            return { ...state, rates: payload.rates }
         default:
             return state
     }
 }
 
-const store = createStore(todos, ["Use Redux"])
-
-store.dispatch({
-    type: "ADD_TODO",
-    text: "Read the docs",
-})
+const store = createStore(currency)
 
 console.log(store.getState())
 

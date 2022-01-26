@@ -19,4 +19,11 @@
             border-bottom-color: #333;
         }
     }
+    button {
+        background: unset;
+        font-size: 16px;
+        border: 2px solid #000;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 }

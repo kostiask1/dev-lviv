@@ -1,0 +1,3 @@
+export const CONVERT_CURRENCY = "CONVERT_CURRENCY"
+export const GET_RATES = "GET_RATES"
+export const BASE_CURRENCY = "BASE_CURRENCY"
