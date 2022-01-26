@@ -1,0 +1,22 @@
+.navigation {
+    display: flex;
+    width: 100%;
+    padding: 2em;
+    align-items: center;
+    justify-content: center;
+    &__link {
+        display: inline-block;
+        margin: 0 1em;
+        text-decoration: none;
+        font-size: 2em;
+        text-transform: uppercase;
+        color: #000;
+        border-bottom: 3px solid transparent;
+        transition: 0.3s all;
+        &--active,
+        &:hover {
+            color: #333;
+            border-bottom-color: #333;
+        }
+    }
+}

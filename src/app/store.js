@@ -1,8 +1,21 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { createStore } from "redux"
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
+function todos(state = [], action) {
+    switch (action.type) {
+        case "ADD_TODO":
+            return state.concat([action.text])
+        default:
+            return state
+    }
+}
+
+const store = createStore(todos, ["Use Redux"])
+
+store.dispatch({
+    type: "ADD_TODO",
+    text: "Read the docs",
+})
+
+console.log(store.getState())
+
+export default store
