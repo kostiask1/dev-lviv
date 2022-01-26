@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/dev-lviv/static/css/main.47d26610.css",
-    "main.js": "/dev-lviv/static/js/main.bb9d61dc.js",
+    "main.js": "/dev-lviv/static/js/main.7ecb4dad.js",
     "static/css/715.c20bb2e3.chunk.css": "/dev-lviv/static/css/715.c20bb2e3.chunk.css",
     "static/js/715.de7dbd4b.chunk.js": "/dev-lviv/static/js/715.de7dbd4b.chunk.js",
     "static/css/376.ade7060a.chunk.css": "/dev-lviv/static/css/376.ade7060a.chunk.css",
@@ -11,7 +11,7 @@
     "static/js/569.ff68035e.chunk.js": "/dev-lviv/static/js/569.ff68035e.chunk.js",
     "index.html": "/dev-lviv/index.html",
     "main.47d26610.css.map": "/dev-lviv/static/css/main.47d26610.css.map",
-    "main.bb9d61dc.js.map": "/dev-lviv/static/js/main.bb9d61dc.js.map",
+    "main.7ecb4dad.js.map": "/dev-lviv/static/js/main.7ecb4dad.js.map",
     "715.c20bb2e3.chunk.css.map": "/dev-lviv/static/css/715.c20bb2e3.chunk.css.map",
     "715.de7dbd4b.chunk.js.map": "/dev-lviv/static/js/715.de7dbd4b.chunk.js.map",
     "376.ade7060a.chunk.css.map": "/dev-lviv/static/css/376.ade7060a.chunk.css.map",
@@ -22,6 +22,6 @@
   },
   "entrypoints": [
     "static/css/main.47d26610.css",
-    "static/js/main.bb9d61dc.js"
+    "static/js/main.7ecb4dad.js"
   ]
 }
