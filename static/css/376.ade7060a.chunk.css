@@ -1,0 +1,2 @@
+.rates ul{grid-gap:.4em;display:grid;grid-template-columns:repeat(4,1fr);list-style:none}.rates ul li{align-items:center;border:1px solid #000;display:flex;justify-content:center}.rates ul li span{display:inline-block;font-size:18px;margin:0 .1em;padding:.4em 0}.rates ul li small{display:inline-block;font-size:.5em;margin-left:.5em}
+/*# sourceMappingURL=376.ade7060a.chunk.css.map*/
