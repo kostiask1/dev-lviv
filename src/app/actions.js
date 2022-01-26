@@ -14,10 +14,10 @@ const convertCurrencies = ({ result, curr_2 }) => {
     }
 }
 
-const memoizeCurrencies = (rates) => {
+const getRates = (rates) => {
     return {
         type: GET_RATES,
         payload: { rates },
     }
 }
-export { baseCurrency, convertCurrencies, memoizeCurrencies }
+export { baseCurrency, convertCurrencies, getRates }

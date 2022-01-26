@@ -29,6 +29,4 @@ function currency(state = initialState, { type, payload }) {
 
 const store = createStore(currency)
 
-console.log(store.getState())
-
 export default store

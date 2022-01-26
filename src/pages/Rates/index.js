@@ -34,7 +34,6 @@ const Rates = () => {
     }, [store])
 
     useEffect(() => {
-        console.log(current_currency)
         if (current_currency && current_currency.length === 3) getRates()
     }, [current_currency])
 
