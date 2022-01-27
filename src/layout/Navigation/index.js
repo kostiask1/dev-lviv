@@ -53,7 +53,7 @@ const Navigation = ({ current_currency = true, setBaseCurrency }) => {
                 <button onClick={openModal}>Change currency</button>
             </nav>
             {modalIsOpen ? (
-                <Suspense fallback={<p>Loading modal...</p>}>
+                <Suspense fallback={null}>
                     <Modal close={closeModal}>
                         <h2>Change your currency code:</h2>
                         <input
