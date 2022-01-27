@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/715.6c34023a.chunk.css","mappings":"AACI,iBACI,UAAW,CACd,mBAEG,cAAe,CACf,wBAAyB","sources":["pages/Converter/index.scss"],"sourcesContent":[".converter {\r\n    &__wrap {\r\n        width: 100%;\r\n    }\r\n    &__result {\r\n        font-size: 22px;\r\n        text-transform: uppercase;\r\n    }\r\n}\r\n"],"names":[],"sourceRoot":""}
