@@ -22,7 +22,9 @@ const Navigation = ({ current_currency = true, setBaseCurrency }) => {
     }
 
     const chooseCurrency = (e) => {
-        setBaseCurrency(e.target.value.toUpperCase())
+        const currency = e.target.value.toUpperCase()
+        if (currency.length > 3) return
+        setBaseCurrency(currency)
     }
     return (
         <>

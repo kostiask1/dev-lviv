@@ -18,7 +18,6 @@ function currency(state = initialState, { type, payload }) {
             }
 
         case BASE_CURRENCY:
-            if (payload.curr.length > 3) return state
             localStorage.setItem("currency_name", payload.curr)
             return { ...state, current_currency: payload.curr }
         case GET_RATES:
