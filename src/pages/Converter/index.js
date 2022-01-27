@@ -1,22 +1,12 @@
-import React, { useRef, useEffect, useState } from "react"
-import "./index.scss"
-import store from "../../app/store"
 import axios from "axios"
+import React, { useRef } from "react"
+import { connect } from "react-redux"
 import { CONVERT_CURRENCY } from "../../app/types"
+import "./index.scss"
 const API = process.env.REACT_APP_API_KEY
 
-const Converter = () => {
-    const [state, setState] = useState({})
-    const { curr_2, result } = state
+const Converter = ({ curr_2, result, convertCurrency }) => {
     const inputRef = useRef(null)
-
-    useEffect(() => {
-        store.subscribe(() => setState(() => store.getState()))
-    }, [])
-
-    useEffect(() => {
-        setState(store.getState())
-    }, [store])
 
     const convertValue = () => {
         let value = inputRef.current.value
@@ -43,10 +33,7 @@ const Converter = () => {
                     const rates = response.data.data
                     let result = rates[curr_2] * quantity
                     result = result.toFixed(2)
-                    return store.dispatch({
-                        type: CONVERT_CURRENCY,
-                        payload: { curr_2, result },
-                    })
+                    return convertCurrency({ curr_2, result })
                 }
             })
     }
@@ -69,11 +56,22 @@ const Converter = () => {
                     </span>
                 ) : null}
             </div>
-            <button className="converter__submit" onClick={convertValue}>
-                Convert
-            </button>
+            <button onClick={convertValue}>Convert</button>
         </div>
     )
 }
 
-export default Converter
+const mapStateToProps = ({ curr_2, result }) => ({
+    curr_2,
+    result,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    convertCurrency: ({ curr_2, result }) =>
+        dispatch({
+            type: CONVERT_CURRENCY,
+            payload: { curr_2, result },
+        }),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Converter)

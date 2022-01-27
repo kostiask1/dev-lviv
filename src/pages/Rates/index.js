@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react"
-import "./index.scss"
 import axios from "axios"
-import store from "../../app/store"
+import React, { useEffect } from "react"
+import { connect } from "react-redux"
 import { GET_RATES } from "../../app/types"
+import "./index.scss"
 const API = process.env.REACT_APP_API_KEY
 
-const Rates = () => {
-    const [state, setState] = useState({})
-    const { rates = [], current_currency } = state
-
-    useEffect(() => {
-        store.subscribe(() => setState(() => store.getState()))
-    }, [])
-
+const Rates = ({ rates, current_currency, getRates: getRatesList }) => {
     const getRates = () => {
         axios
             .get(
@@ -21,24 +14,21 @@ const Rates = () => {
             .then((response) => {
                 if (response.status === 200) {
                     const rates = response.data.data
-                    return store.dispatch({
-                        type: GET_RATES,
-                        payload: { rates: Object.entries(rates) },
-                    })
+                    return getRatesList({ rates: Object.entries(rates) })
                 }
             })
     }
 
     useEffect(() => {
-        setState(store.getState())
-    }, [store])
-
-    useEffect(() => {
         if (current_currency && current_currency.length === 3) getRates()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [current_currency])
 
     return (
         <div className="rates">
+            <button onClick={getRates}>
+                Update list with base currency as {current_currency}
+            </button>
             <ul>
                 {rates.map((rate) => (
                     <li key={rate[0]}>
@@ -54,4 +44,17 @@ const Rates = () => {
     )
 }
 
-export default Rates
+const mapStateToProps = ({ rates, current_currency }) => ({
+    rates,
+    current_currency,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    getRates: ({ rates }) =>
+        dispatch({
+            type: GET_RATES,
+            payload: { rates },
+        }),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Rates)

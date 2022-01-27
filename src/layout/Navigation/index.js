@@ -1,22 +1,12 @@
-import React, { useEffect, useState, lazy, Suspense } from "react"
+import React, { lazy, Suspense, useEffect, useState } from "react"
+import { connect } from "react-redux"
 import { NavLink } from "react-router-dom"
-import "./index.scss"
-import store from "../../app/store"
 import { BASE_CURRENCY } from "../../app/types"
+import "./index.scss"
 const Modal = lazy(() => import("../../Modal"))
 
-const Navigation = () => {
+const Navigation = ({ current_currency = true, setBaseCurrency }) => {
     const [modalIsOpen, setModalIsOpen] = useState(false)
-    const [state, setState] = useState({})
-    const { current_currency = true } = state
-
-    useEffect(() => {
-        store.subscribe(() => setState(() => store.getState()))
-    }, [])
-
-    useEffect(() => {
-        setState(store.getState())
-    }, [store])
 
     useEffect(() => {
         if (!current_currency) {
@@ -32,10 +22,7 @@ const Navigation = () => {
     }
 
     const chooseCurrency = (e) => {
-        store.dispatch({
-            type: BASE_CURRENCY,
-            payload: { curr: e.target.value.toUpperCase() },
-        })
+        setBaseCurrency(e.target.value.toUpperCase())
     }
     return (
         <>
@@ -81,4 +68,17 @@ const Navigation = () => {
     )
 }
 
-export default Navigation
+const mapStateToProps = ({ current_currency }) => {
+    return {
+        current_currency,
+    }
+}
+const mapDispatchToProps = (dispatch) => ({
+    setBaseCurrency: (curr) =>
+        dispatch({
+            type: BASE_CURRENCY,
+            payload: { curr },
+        }),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation)
