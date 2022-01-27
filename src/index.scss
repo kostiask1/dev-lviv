@@ -33,13 +33,15 @@ button {
     font-weight: 600;
     color: #fff;
     background-color: #7bc2da;
-    text-transform: capitalize;
     font-size: 16px;
     border: none;
     margin-top: 1em;
     padding: 0.7em 2em;
     border-radius: 5px;
     cursor: pointer;
+    &:first-letter {
+        text-transform: uppercase;
+    }
     &:hover {
         background-color: #49bce2;
     }

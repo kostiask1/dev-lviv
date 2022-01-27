@@ -27,7 +27,7 @@ const Rates = ({ rates, current_currency, getRates: getRatesList }) => {
     return (
         <div className="rates">
             <button onClick={getRates}>
-                Update list with base currency as {current_currency}
+                Update list with base currency as {current_currency} to latest values
             </button>
             <ul>
                 {rates.map((rate) => (
